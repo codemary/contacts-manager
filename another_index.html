@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>CORS TEST</title>
+</head>
+<body>
+    CORS TEST!
+<script type="application/javascript">
+
+    const contact = {"id": 99, name: "yoman"}
+    const options = {
+        method: 'POST',
+        body: JSON.stringify(contact),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    fetch('http://localhost:3000/contacts', options)
+        .then(res => res.json())
+        .then(res => console.log(res));
+</script>
+</body>
+</html>
