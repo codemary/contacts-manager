@@ -12,7 +12,7 @@ const devConfig = {
 };
 
 const prodConfig = {
-  db: env.MONGO_URL
+  db: env.MONGODB_URI
 };
 
 const currentConfig = config.env === 'development' ? devConfig : prodConfig;

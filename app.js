@@ -33,9 +33,9 @@ db.once('open', function() {
 
 const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// // view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 // to allow server 3000:
 const corsOptions = {
@@ -48,9 +48,10 @@ app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json()); // content-type: application/json
 app.use(express.urlencoded({ extended: false })); // content-type: application/x-www-form-urlencoded
-app.use(express.static(path.join(__dirname, 'public'))); // to serve static content only like stylesheets, images, etc
+// app.use(express.static(path.join(__dirname, 'public'))); // to serve static content only like stylesheets, images, etc
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 
 app.post('/signup', userController.signupUser);
 app.post('/login', userController.loginUser);
@@ -64,7 +65,14 @@ app.use(jwt({secret: config.secret}))
 app.use('/contacts', contactsRouter);
 app.use('/users', usersRouter);
 
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
 // error handler
 app.use(errorMiddleware.handler);
+
+
 
 module.exports = app;
