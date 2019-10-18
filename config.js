@@ -12,7 +12,8 @@ const devConfig = {
 };
 
 const prodConfig = {
-  db: env.MONGO_URI
+  db: env.MONGO_URI,
+  secret: env.JWT_SECRET
 };
 
 const currentConfig = config.env === 'development' ? devConfig : prodConfig;
