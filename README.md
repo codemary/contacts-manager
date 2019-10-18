@@ -1,4 +1,8 @@
-## app.js
+# Contacts Manager App
+
+Deploying to Heroku
+
+## 1. app.js
 
 ```js
 + app.use(express.static(path.join(__dirname, 'client/build')));
@@ -18,7 +22,7 @@ app.use('/users', usersRouter);
 + });
 ```
 
-## config.js
+## 2. config.js
 
 ```json
 const prodConfig = {
@@ -28,7 +32,7 @@ const prodConfig = {
 
 ```
 
-## package.json
+## 3. package.json
 
 ```json
 "scripts": {
@@ -39,7 +43,7 @@ const prodConfig = {
 
 ```
 
-## Heroku Deploy
+## 4. Heroku
 
 1. Install heroku cli and setup: https://dashboard.heroku.com/apps/<myproject-name>/deploy/heroku-git
 2. heroku config:set MONGO_URI="mongodb+srv://username:password@myproject.mongodb.net/contacts-manager?retryWrites=true"
